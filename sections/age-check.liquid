@@ -13,7 +13,7 @@
                 <h2>{{ section.settings.heading }}</h2>
                 {{ section.settings.content }}
             </div>
-            <div class="age-gate__welcome hide">
+            <div class="age-gate__welcome hidden">
                 <h2>{{ section.settings.heading_welcome }}</h2>
                 {{ section.settings.content_welcome }}
             </div>
@@ -40,8 +40,8 @@ function ageCheckCancel() {
     const contextDefault = document.querySelector('.age-gate__context');
     const contextWelcome = document.querySelector('.age-gate__welcome');
 
-    contextDefault.classList.add('hide');
-    contextWelcome.classList.remove('hide');
+    contextDefault.classList.add('hidden');
+    contextWelcome.classList.remove('hidden');
 };
 
 function readCookie(name) {
