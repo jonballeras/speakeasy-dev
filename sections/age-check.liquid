@@ -26,7 +26,7 @@
     </div>
 </div>
 
-{% javascript %}
+<script type="text/javascript">
 function ageCheck() {
     const days = 14; //number of days until they must go through the age checker again.
     const date = new Date();
@@ -63,7 +63,7 @@ if (isAnAdult) {
     document.body.classList.add('age-restriction');
     document.getElementById('age-gate-popup').style.display = 'block';
 };
-{% endjavascript %}
+</script>
 
 {% stylesheet %}
 .age-restriction {
