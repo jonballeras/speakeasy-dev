@@ -1,0 +1,171 @@
+{% capture adult_header %}
+ALL GOOD THINGS COME WITH AGE!
+{% endcapture %}
+
+{% capture adult_text %}
+You must be legal drinking age for this delicacy.
+{% endcapture %}
+
+{% capture adult_challenge %}
+Are you over 21 years of age?
+{% endcapture %}
+
+<div class="age-gate-wrapper" id="age-gate-popup">
+    <div class="age-gate">
+        <div class="age-gate__content">
+            <img srcset="{{ 'logo-age-check.png' | asset_img_url: '460x' }} 1x, {{ 'logo-age-check.png' | asset_img_url: '460x', scale: 2 }} 2x"
+                src="{{ 'logo-age-check.png' | asset_img_url: '460x' }}"
+                loading="lazy"
+                class="age-gate__logo"
+                width="460"
+                height="400"
+                alt="{{ shop.name }}"
+            >
+            <div class="age-gate__context">
+                <h2>{{ section.settings.heading }}</h2>
+                {{ section.settings.content }}
+            </div>
+            <div class="age-gate__welcome hide">
+                <h2>{{ section.settings.heading_welcome }}</h2>
+                {{ section.settings.content_welcome }}
+            </div>
+
+            <div class="age-gate__buttons">
+                <button id="submit_birthdate" class="button button-enter" onclick="ageCheck()">{{ 'Yes' }}</button>
+                <button class="button age-gate-submit-no" onclick="ageCheckCancel()">{{ 'No' }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% javascript %}
+function ageCheck() {
+    const days = 14; //number of days until they must go through the age checker again.
+    const date = new Date();
+    date.setTime(date.getTime()+(days*24*60*60*1000));
+    const expires = "; expires="+date.toGMTString();
+    document.cookie = 'isAnAdult=true;'+expires+"; path=/";
+    location.reload();
+};
+
+function ageCheckCancel() {
+    const contextDefault = document.querySelector('.age-gate__context');
+    const contextWelcome = document.querySelector('.age-gate__welcome');
+
+    contextDefault.classList.add('hide');
+    contextWelcome.classList.remove('hide');
+};
+
+function readCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+};
+
+const isAnAdult = readCookie('isAnAdult');
+if (isAnAdult) {
+    document.body.classList.remove('age-restriction');
+    document.getElementById('age-gate-popup').style.display = 'none';
+} else {
+    document.body.classList.add('age-restriction');
+    document.getElementById('age-gate-popup').style.display = 'block';
+};
+{% endjavascript %}
+
+{% stylesheet %}
+.age-restriction {
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+#age-gate-popup {
+  background: rgba(0, 0, 0, 1);
+  color: #FFFFFF;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+}
+
+.age-gate {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.age-gate__content {
+    max-width: 500px;
+    padding: 50px 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.age-gate__content img {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+.age-gate__content h2 {
+    color: #FFFFFF;
+    margin: 1rem 0;
+}
+
+.age-gate__content p {
+    line-height: 1.6;
+    margin: 0;
+}
+
+.age-gate__buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.age-gate__buttons .button {
+    margin: 0 1rem;
+    text-transform: uppercase;
+}
+{% endstylesheet %}
+
+
+{% schema %}
+{
+    "name": "Age Check Popup",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Context"
+        },
+        {
+            "type": "text",
+            "id": "heading_welcome",
+            "label": "Welcome heading"
+        },
+        {
+            "type": "richtext",
+            "id": "content_welcome",
+            "label": "Welcome context"
+        }
+    ]
+}
+{% endschema %}
