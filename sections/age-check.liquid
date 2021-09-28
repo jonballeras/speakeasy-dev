@@ -39,8 +39,10 @@ function ageCheck() {
 function ageCheckCancel() {
     const contextDefault = document.querySelector('.age-gate__context');
     const contextWelcome = document.querySelector('.age-gate__welcome');
+    const ageGateButtons = document.querySelector('.age-gate__buttons');
 
     contextDefault.classList.add('hidden');
+    ageGateButtons.classList.add('hidden');
     contextWelcome.classList.remove('hidden');
 };
 
