@@ -9,8 +9,7 @@ const data = `{
   }
 }`
 
-
-$.ajax({
+fetch({
   url: 'https://speak-easy-dev.myshopify.com/api/2021-10/graphql.json',
   type: 'POST',
   headers: {
