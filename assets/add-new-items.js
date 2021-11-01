@@ -1,13 +1,12 @@
-const data = `{
-            products(first:5) {
-                edges {
-                    node {
-                        id
-                        title
-                    }
-                }
-            }
-		}`
+const data = `query Collection($handle:String!) {
+  {
+    collectionByHandle(handle: $handle){
+      id
+      title
+      handle
+    }
+  }
+}`
 
 
 $.ajax({
