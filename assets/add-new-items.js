@@ -17,10 +17,10 @@ $.ajax({
   	"X-Shopify-Storefront-Access-Token": "1a83e16bed23e5a02c54024f170205dc",
     "Content-Type": "application/json",
   },
-  Accept: "application/json",
+  //Accept: "application/json",
   body: JSON.stringify({
     query: data
   })
 })
 .then(r => r.json())
-  .then(data => console.log('data returned:', data));
+.then(data => console.log('data returned:', data));
