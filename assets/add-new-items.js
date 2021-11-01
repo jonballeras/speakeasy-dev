@@ -21,7 +21,6 @@ $.ajax({
   body: JSON.stringify({
     query: data
   })
-  success: function (result) {
-    console.log(JSON.stringify(result));
-  },
 })
+.then(r => r.json())
+  .then(data => console.log('data returned:', data));
