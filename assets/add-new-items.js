@@ -6,7 +6,7 @@ $.ajax({
     "Content-Type": "application/json",
   },
   data: {
-    json: JSON.stringify({
+    json: {
     	query: `{
             products(first:5) {
                 edges {
@@ -16,7 +16,7 @@ $.ajax({
                     }
                 }
             }
-}`})
+}`}
   },
   success: function (result) {
     console.log(JSON.stringify(result));
