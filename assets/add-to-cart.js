@@ -24,6 +24,9 @@ var messagesRef = firebase.database().ref('imed');
 messagesRef.once('value').then((snapshot) => {
   productID =  snapshot.val()
   console.log(productID.handle)
+  jQuery.getJSON(`/products/${productID.handle}.js`, function(product) {
+    console.log(product)
+  } );
 
   
   let formData = {
