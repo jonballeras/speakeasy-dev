@@ -48,9 +48,6 @@ messagesRef.once('value').then((snapshot) => {
   productID =  snapshot.val()
   console.log(productID)
 
-  // jQuery.getJSON('/products/ginja9-750-ml.js', function(product) {
-  //   console.log(product);
-  // } );
   
   let formData = {
     'items': [{
