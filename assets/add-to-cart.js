@@ -42,9 +42,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-console.log('heloooooooooooo')
 var messagesRef = firebase.database().ref('imed');
 messagesRef.once('value').then((snapshot) => {
-  snapshot.value()
+  console.log('heloooooooooooo')
+  console.log(snapshot.value())
 });
 
