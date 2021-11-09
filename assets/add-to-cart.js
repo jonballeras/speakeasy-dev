@@ -41,10 +41,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+var productID 
 firebase.initializeApp(firebaseConfig);
 var messagesRef = firebase.database().ref('imed');
 messagesRef.once('value').then((snapshot) => {
   console.log('heloooooooooooo')
-  console.log(snapshot.val())
+  productID = snapshot.val()
 });
 
+console.log(productID)
