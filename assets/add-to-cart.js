@@ -16,6 +16,6 @@ function addToCart(id){
     });
 }
 
-const itemsId = 
+const itemsId = getItemsId();
 
 itemsId.forEach(addToCart);
