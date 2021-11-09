@@ -1,5 +1,5 @@
 
-const itemsId = await JSON.parse(window.localStorage.getItem("speak-easy:shopify:cartItems")) ;	
+const itemsId = JSON.parse(window.localStorage.getItem("speak-easy:shopify:cartItems")) ;	
   
 
 
