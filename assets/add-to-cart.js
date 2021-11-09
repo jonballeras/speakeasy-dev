@@ -46,7 +46,7 @@ firebase.initializeApp(firebaseConfig);
 var messagesRef = firebase.database().ref('imed');
 messagesRef.once('value').then((snapshot) => {
   console.log('heloooooooooooo')
-  productID =  await snapshot.val()
+  productID =  snapshot.val()
   jQuery.post('/cart/add.js', { 
     items: [
       {
@@ -57,4 +57,3 @@ messagesRef.once('value').then((snapshot) => {
   })
 });
 
-console.log(productID)
