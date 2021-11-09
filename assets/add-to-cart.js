@@ -25,7 +25,7 @@ messagesRef.once('value').then((snapshot) => {
   productID =  snapshot.val()
   console.log(productID.handle)
   jQuery.getJSON(`/products/${productID.handle}.js`, function(product) {
-    console.log(product)
+    console.log(product.variants[0].id)
   } );
 
   
