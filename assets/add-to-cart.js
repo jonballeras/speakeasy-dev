@@ -51,13 +51,19 @@ messagesRef.once('value').then((snapshot) => {
   // jQuery.getJSON('/products/ginja9-750-ml.js', function(product) {
   //   console.log(product);
   // } );
-  jQuery.post('/cart/add.js', { 
-    items: [
-      {
-        quantity: 1,
-        id: 41044278706375,
-      }
-    ]        
+  
+  let formData = {
+    'items': [{
+     'id': 41044278706375,
+     'quantity': 2
+     }]
+   };
+  fetch('/cart/add.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
   })
 });
 
