@@ -42,7 +42,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
+console.log('heloooooooooooo')
 var messagesRef = firebase.database().ref('imed');
 messagesRef.once('value').then((snapshot) => {
   Object.keys(snapshot.val()).forEach((key) => {
