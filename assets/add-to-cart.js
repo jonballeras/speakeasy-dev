@@ -26,21 +26,22 @@ messagesRef.once('value').then((snapshot) => {
   console.log(productID.handle)
   jQuery.getJSON(`/products/${productID.handle}.js`, function(product) {
     console.log(product.variants[0].id)
+    let formData = {
+      'items': [{
+       'id': product.variants[0].id,
+       'quantity': 2
+       }]
+     };
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
   } );
 
   
-  let formData = {
-    'items': [{
-     'id': 41044278706375,
-     'quantity': 2
-     }]
-   };
-  fetch('/cart/add.js', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(formData)
-  })
+  
 });
 
