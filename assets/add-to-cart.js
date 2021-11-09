@@ -1,5 +1,3 @@
-
-
 // Import the functions you need from the SDKs you need
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -18,30 +16,37 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-var productID 
+var productID;
 firebase.initializeApp(firebaseConfig);
-var messagesRef = firebase.database().ref('imed');
-messagesRef.once('value').then((snapshot) => {
-  productID =  snapshot.val()
-  console.log(productID.handle)
-  jQuery.getJSON(`/products/${productID.handle}.js`, function(product) {
-    console.log(product.variants[0].id)
-    let formData = {
-      'items': [{
-       'id': product.variants[0].id,
-       'quantity': 2
-       }]
-     };
-    fetch('/cart/add.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-  } );
-
-  
-  
-});
-
+var messagesRef = firebase.database().ref("imed");
+messagesRef
+  .once("value")
+  .then((snapshot) => {
+    if (snapshot.exists()) {
+      productID = snapshot.val();
+      console.log(productID.handle);
+      jQuery.getJSON(`/products/${productID.handle}.js`, function (product) {
+        console.log(product.variants[0].id);
+        let formData = {
+          items: [
+            {
+              id: product.variants[0].id,
+              quantity: 2,
+            },
+          ],
+        };
+        fetch("/cart/add.js", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+      });
+    } else {
+      console.log("No data available");
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+  });
