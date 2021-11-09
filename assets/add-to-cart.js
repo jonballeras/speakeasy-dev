@@ -47,13 +47,17 @@ var messagesRef = firebase.database().ref('imed');
 messagesRef.once('value').then((snapshot) => {
   productID =  snapshot.val()
   console.log(productID)
-  jQuery.post('/cart/add.js', { 
-    items: [
-      {
-        quantity: 1,
-        id: productID,
-      }
-    ]        
-  })
+
+  jQuery.getJSON('/products/red-rain-coat.js', function(product) {
+    console.log(product);
+  } );
+  // jQuery.post('/cart/add.js', { 
+  //   items: [
+  //     {
+  //       quantity: 1,
+  //       id: productID,
+  //     }
+  //   ]        
+  // })
 });
 
