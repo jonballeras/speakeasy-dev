@@ -45,8 +45,8 @@ var productID
 firebase.initializeApp(firebaseConfig);
 var messagesRef = firebase.database().ref('imed');
 messagesRef.once('value').then((snapshot) => {
-  console.log('heloooooooooooo')
   productID =  snapshot.val()
+  console.log(productID)
   jQuery.post('/cart/add.js', { 
     items: [
       {
