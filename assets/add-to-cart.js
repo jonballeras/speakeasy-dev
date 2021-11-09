@@ -1,7 +1,7 @@
-const getItemsId = async () => {
-	const itemsId = await JSON.parse(window.localStorage.getItem("speak-easy:shopify:cartItems")) ;	
-  	return itemsId
-} 
+
+const itemsId = await JSON.parse(window.localStorage.getItem("speak-easy:shopify:cartItems")) ;	
+  
+
 
 
 
@@ -16,6 +16,6 @@ function addToCart(id){
     });
 }
 
-const itemsId = getItemsId();
+
 console.log(itemsId)
 //itemsId.forEach(addToCart);
