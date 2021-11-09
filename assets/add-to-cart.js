@@ -2,10 +2,10 @@
 window.addEventListener("message", (event) => {
   // Do we trust the sender of this message?  (might be
   // different from what we originally opened, for example).
-  if (event.origin == "https://tuccilimited.myshopify.com"){
-    const itemsId = event.data
-    console.log(itemsId)
-  }
+  console.log(event.origin) 
+  // const itemsId = event.data
+  // console.log(itemsId)
+  
     
   // event.source is popup
 }, false);  
