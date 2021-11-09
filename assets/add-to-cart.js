@@ -1,22 +1,3 @@
-window.addEventListener("message", (event) => {
-  console.log(event.data)
-  
-
-}, false);
-
-// function addToCart(id){
-// 	jQuery.post('/cart/add.js', {
-//       items: [
-//         {
-//           quantity: 1,
-//           id: id,
-//         }
-//       ]
-//     });
-// }
-
-// itemsId.forEach(addToCart);
-
 
 
 // Import the functions you need from the SDKs you need
