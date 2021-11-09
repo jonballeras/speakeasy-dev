@@ -1,4 +1,4 @@
-const itemsId = JSON.parse(window.localStorage.getItem("speak-easy:shopify:cart")).items ;
+const itemsId = JSON.parse(window.localStorage.getItem("speak-easy:shopify:cartItems")).items ;
 
 
 function addToCart(id){
