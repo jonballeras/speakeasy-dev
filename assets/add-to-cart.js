@@ -23,7 +23,7 @@ firebase.initializeApp(firebaseConfig);
 var messagesRef = firebase.database().ref('imed');
 messagesRef.once('value').then((snapshot) => {
   productID =  snapshot.val()
-  console.log(productID)
+  console.log(productID.handle)
 
   
   let formData = {
