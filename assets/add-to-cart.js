@@ -17,5 +17,5 @@ function addToCart(id){
 }
 
 const itemsId = getItemsId();
-
-itemsId.forEach(addToCart);
+console.log(itemsId)
+//itemsId.forEach(addToCart);
