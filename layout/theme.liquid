@@ -170,6 +170,10 @@
         shareSuccess: `{{ 'general.share.success_message' | t }}`,
       }
     </script>
+     <!-- firebase CDN -->
+     <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+     <!-- ================ -->
 
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
