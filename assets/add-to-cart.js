@@ -15,38 +15,41 @@ const firebaseConfig = {
   measurementId: "G-F6N33X2HFB",
 };
 
-// Initialize Firebase
+
 var productID;
 firebase.initializeApp(firebaseConfig);
 var messagesRef = firebase.database().ref("imed");
-messagesRef
-  .once("value")
-  .then((snapshot) => {
-    if (snapshot.exists()) {
-      productID = snapshot.val();
-      console.log(productID.handle);
-      jQuery.getJSON(`/products/${productID.handle}.js`, function (product) {
-        console.log(product.variants[0].id);
-        let formData = {
-          items: [
-            {
-              id: product.variants[0].id,
-              quantity: 2,
-            },
-          ],
-        };
-        fetch("/cart/add.js", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
-      });
-    } else {
-      console.log("No data available");
-    }
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+messagesRef.on('value', snapshot => {
+  snapshot.exists() && console.log(snapshot.val().handle)
+})
+// messagesRef
+//   .once("value")
+//   .then((snapshot) => {
+//     if (snapshot.exists()) {
+//       productID = snapshot.val();
+//       console.log(productID.handle);
+//       jQuery.getJSON(`/products/${productID.handle}.js`, function (product) {
+//         console.log(product.variants[0].id);
+//         let formData = {
+//           items: [
+//             {
+//               id: product.variants[0].id,
+//               quantity: 2,
+//             },
+//           ],
+//         };
+//         fetch("/cart/add.js", {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//           body: JSON.stringify(formData),
+//         });
+//       });
+//     } else {
+//       console.log("No data available");
+//     }
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//   });
