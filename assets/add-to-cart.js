@@ -1,7 +1,6 @@
 window.addEventListener("message", (event) => {
-  console.log(event.origin)
-  const itemsId = event.data
-  console.log(itemsId)
+  console.log(event.data)
+  
 
 }, false);
 
