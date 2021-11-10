@@ -39,7 +39,7 @@ const firebaseConfig = () => {
 const addToCart = async () => { 
   firebaseConfig()
   const userId = await getUserId();
-  const messagesRef = firebase.database().ref("users" + userId.replaceAll(".",""));
+  const messagesRef = firebase.database().ref("users/" + userId.replaceAll(".",""));
   messagesRef
     .once("value")
     .then(async (snapshot) => {
