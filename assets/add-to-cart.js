@@ -28,7 +28,7 @@ const firebaseConfig = () => {
   
 }
 
-
+firebaseConfig()
 var productID;
 var messagesRef = firebase.database().ref("imed");
 
