@@ -43,7 +43,7 @@ messagesRef
       if (productID = await getUserId()){
         console.log(await getUserId())
       }
-      console.log(productID.handle);
+      // console.log(productID.handle);
       // jQuery.getJSON(`/products/${productID.handle}.js`, function (product) {
       //   console.log(product.variants[0].id);
       //   let formData = {
