@@ -6,6 +6,13 @@ const getUserId = async () => {
   return userId
 }
 
+const changeUpdateField = (messagesRef, handleName, userId) => {
+  messagesRef.set({
+    handle: handleName,
+    update: true,
+    userid: userId
+  })
+}
 
 const firebaseConfig = () => {
   // Import the functions you need from the SDKs you need
@@ -43,28 +50,30 @@ messagesRef
       const userId = await getUserId();
       if (productID.userid === userId){
         if (!productID.update){
+          changeUpdateField(messagesRef,productID.handle, productID.userid)
           console.log(true)
+          console.log(productID.handle);
+          jQuery.getJSON(`/products/${productID.handle}.js`, (product) => {
+            console.log(product.variants[0].id);
+            let formData = {
+              items: [
+                {
+                  id: product.variants[0].id,
+                  quantity: 2,
+                },
+              ],
+            };
+            fetch("/cart/add.js", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+            });
+          });
         }
       }
-      //  console.log(productID.handle);
-      // jQuery.getJSON(`/products/${productID.handle}.js`, function (product) {
-      //   console.log(product.variants[0].id);
-      //   let formData = {
-      //     items: [
-      //       {
-      //         id: product.variants[0].id,
-      //         quantity: 2,
-      //       },
-      //     ],
-      //   };
-      //   fetch("/cart/add.js", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify(formData),
-      //   });
-      // });
+      
     } else {
       console.log("No data available");
     }
