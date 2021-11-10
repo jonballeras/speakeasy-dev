@@ -37,11 +37,11 @@ var messagesRef = firebase.database().ref("imed");
 // })
 messagesRef
   .once("value")
-  .then((snapshot) => {
+  .then(async (snapshot) => {
     if (snapshot.exists()) {
       productID = snapshot.val();
-      if (productID = getUserId()){
-        console.log(getUserId())
+      if (productID = await getUserId()){
+        console.log(await getUserId())
       }
       console.log(productID.handle);
       // jQuery.getJSON(`/products/${productID.handle}.js`, function (product) {
