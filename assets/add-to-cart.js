@@ -40,10 +40,11 @@ messagesRef
   .then(async (snapshot) => {
     if (snapshot.exists()) {
       productID = snapshot.val();
-      if (productID = await getUserId()){
-        console.log(await getUserId())
+      const userId = await getUserId();
+      if (productID === userId){
+        console.log(true)
       }
-      // console.log(productID.handle);
+      //  console.log(productID.handle);
       // jQuery.getJSON(`/products/${productID.handle}.js`, function (product) {
       //   console.log(product.variants[0].id);
       //   let formData = {
