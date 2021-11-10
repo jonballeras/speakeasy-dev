@@ -42,7 +42,9 @@ messagesRef
       productID = snapshot.val();
       const userId = await getUserId();
       if (productID.userid === userId){
-        console.log(true)
+        if (!productID.update){
+          console.log(true)
+        }
       }
       //  console.log(productID.handle);
       // jQuery.getJSON(`/products/${productID.handle}.js`, function (product) {
