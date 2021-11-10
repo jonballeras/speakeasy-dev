@@ -79,3 +79,5 @@ const addToCart = async () => {
       console.error(error);
     });
 }
+
+addToCart()
