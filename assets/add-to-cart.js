@@ -35,49 +35,47 @@ const firebaseConfig = () => {
   
 }
 
-firebaseConfig()
-var productID;
-var messagesRef = firebase.database().ref("imed");
 
-//  messagesRef.on('value', snapshot => {
-//   snapshot.exists() && console.log(snapshot.val().handle)
-// })
-messagesRef
-  .once("value")
-  .then(async (snapshot) => {
-    if (snapshot.exists()) {
-      productID = snapshot.val();
-      const userId = await getUserId();
-      if (productID.userid === userId){
-        if (!productID.update){
-          changeUpdateField(messagesRef,productID.handle, productID.userid)
-          console.log(true)
-          console.log(productID.handle);
-          jQuery.getJSON(`/products/${productID.handle}.js`, (product) => {
-            console.log(product.variants[0].id);
-            let formData = {
-              items: [
-                {
-                  id: product.variants[0].id,
-                  quantity: 2,
+const addToCart = async () => { 
+  firebaseConfig()
+  const userId = await getUserId();
+  const messagesRef = firebase.database().ref("users" + userId.replaceAll(".",""));
+  messagesRef
+    .once("value")
+    .then(async (snapshot) => {
+      if (snapshot.exists()) {
+        const productID = snapshot.val();
+        if (productID.userid === userId){
+          if (!productID.update){
+            changeUpdateField(messagesRef,productID.handle, productID.userid)
+            console.log(true)
+            console.log(productID.handle);
+            jQuery.getJSON(`/products/${productID.handle}.js`, (product) => {
+              console.log(product.variants[0].id);
+              let formData = {
+                items: [
+                  {
+                    id: product.variants[0].id,
+                    quantity: 2,
+                  },
+                ],
+              };
+              fetch("/cart/add.js", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
                 },
-              ],
-            };
-            fetch("/cart/add.js", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(formData),
+                body: JSON.stringify(formData),
+              });
             });
-          });
+          }
         }
+        
+      } else {
+        console.log("No data available");
       }
-      
-    } else {
-      console.log("No data available");
-    }
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
