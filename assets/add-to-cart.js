@@ -32,7 +32,7 @@ firebaseConfig()
 var productID;
 var messagesRef = firebase.database().ref("imed");
 
-// messagesRef.on('value', snapshot => {
+//  messagesRef.on('value', snapshot => {
 //   snapshot.exists() && console.log(snapshot.val().handle)
 // })
 messagesRef
