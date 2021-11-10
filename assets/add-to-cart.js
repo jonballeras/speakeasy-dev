@@ -41,7 +41,7 @@ messagesRef
     if (snapshot.exists()) {
       productID = snapshot.val();
       if (productID = getUserId()){
-        console.log(true)
+        console.log(getUserId())
       }
       console.log(productID.handle);
       // jQuery.getJSON(`/products/${productID.handle}.js`, function (product) {
