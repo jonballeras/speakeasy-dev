@@ -88,3 +88,4 @@ const cartUrl = async () => {
   
   console.log(result) 
 }
+cartUrl()
