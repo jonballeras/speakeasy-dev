@@ -82,10 +82,5 @@ const addToCart = async () => {
 
 addToCart()
 
-const cartUrl = async () => {
-  const response = await fetch(routes.cart_url )
-  const result = await response.json() 
-  
-  console.log(result) 
-}
-cartUrl()
+console.log(routes.cart_url)
+
