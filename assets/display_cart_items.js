@@ -61,13 +61,13 @@ const addLineLocalCart = async (product_id, quantity) => {
 const getVariantIdlocalStore = async (handleName, SKU) => {
 
   const result = await fetch(
-    "https://tucci-limited.myshopify.com/api/2022-01/graphql.json",
+    "https://schuttsports.myshopify.com/api/2022-01/graphql.json",
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "X-Shopify-Storefront-Access-Token":
-          "de1032854f8ed7747efa0ba9d8a63d12",
+          "bf51a9d48ffc53d50ef85e01a61eabd7",
         Accept: "application/json",
       },
       body: JSON.stringify({
