@@ -1,13 +1,4 @@
-if (document.location.href === "https://tucci-limited.myshopify.com/cart") {
-    document.getElementsByName("updates[]").forEach(element => {
-        element.addEventListener("change", (ele) => {
-            console.log("hi")
-            // ajax change quantity 
-        })
-    })
-    
 
-}
 
 const cartID = getCookie("cartID") 
 
