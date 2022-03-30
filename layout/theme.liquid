@@ -30,7 +30,7 @@
     {% render 'meta-tags' %}
 
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'add-to-cart.js' | asset_url }}" defer="defer"></script>
+    
     
     <script
       src="https://code.jquery.com/jquery-3.4.1.js"
@@ -128,7 +128,6 @@
   </head>
 
   <body class="gradient">
-    <img src="https://tuccilimited.myshopify.com/sayHello.js" alt="" style="display: none;">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
@@ -172,9 +171,21 @@
       }
     </script>
      <!-- firebase CDN -->
-     <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
-     <!-- ================ -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+    <!-- ================ -->
+
+    <!-- App files -->
+    <script src="{{ 'firebaseConfig.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'setAndGet_cookies.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'shareCart.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'add_item_toCart.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'display_cart_items.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'cartIcon.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'update_carts_items.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'mainFunction.js' | asset_url }}" defer="defer"></script>
+    <!-- ================ -->
 
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
